@@ -3,7 +3,7 @@
 Name        : lab5_exe_C.html
 Assignment  : Lab 5, Exercise C
 Author(s)   : Mahdi Ansari, William Arthur Philip Louis
-Submission  : May 21, 2030
+Submission  : feb 14, 2024
 Description : DOM Elements.
 =========================================================
 -->
@@ -161,11 +161,11 @@ Description : DOM Elements.
 			<section>
 				<h2>Contact Us</h2>
 				<form>
-					<label for="name">Name:</label>
+					<label for="name">Name</label>
 					<input type="text" id="name" name="name" /><br />
-					<label for="email">Email:</label>
+					<label for="email">Email</label>
 					<input type="email" id="email" name="email" /><br />
-					<label for="message">Message:</label>
+					<label for="message">Message</label>
 					<textarea id="message" name="message"></textarea><br />
 					<input type="button" value="Submit" />
 				</form>
@@ -205,35 +205,65 @@ Description : DOM Elements.
 		</footer>
 		<script>
 			document.addEventListener('DOMContentLoaded', function afterRender() {
-				// Task 1: Set the text content of all elements with the class 'companyName' and remove their border
+    // Task 1: Set the text content of all elements with the class 'companyName' and remove their border
+    var companyNames = document.querySelectorAll('.companyName');
+    companyNames.forEach(function(companyName) {
+        companyName.textContent = 'Nader';
+        companyName.style.border = 'none';
+    });
+
+    // Task 2: Change the background color of the navigation bar
+    var navigationBar = document.querySelector('nav');
+    navigationBar.style.backgroundColor = 'lightblue';
+
+    // Task 3: Hide the section titled 'What is full-stack?'
+    var sectionToHide = document.querySelector('article');
+    sectionToHide.style.display = 'none';
+
+    // Task 4: Create a new <p> element and append it to the 'About Us' section
+    var aboutUsSection = document.querySelector('section');
+    var newParagraph = document.createElement('p');
+    newParagraph.textContent = 'This is a new paragraph';
+    newParagraph.style.color = 'red';
+	aboutUsSection.appendChild(newParagraph);
 
 
-				// Task 2: Change the background color of the navigation bar
-				
+    // Task 5: Add placeholders to input elements based on their corresponding label IDs
+    var labels = document.querySelectorAll('label');
+    labels.forEach(function(label) {
+        var inputId = label.getAttribute('for');
+        var inputElement = document.getElementById(inputId);
+        var labelText = label.textContent.trim();
+        inputElement.placeholder = labelText;
+    });
 
-				// Task 3: Hide the section titled 'What is full-stack?'
+    // Task 6: Set the src attribute of the image
+    var imageElement = document.querySelector('img');
+    imageElement.src = './images/example.svg';
 
+    // Task 7: Add a new item in the navigation menu
+    var navigationMenu = document.querySelector('nav ul');
+    var newItem = document.createElement('li');
+    newItem.innerHTML = '<a href="#">Blog</a>';
+    navigationMenu.appendChild(newItem);
 
-				// Task 4: Create a new <p> element and append it to the 'About Us' section
+    // Task 8: Change the submit button text upon clicking and make it disabled
+    var submitButton = document.querySelector('input[type="button"]');
+    submitButton.addEventListener('click', function() {
+        submitButton.value = 'Submitted';
+        submitButton.disabled = true;
+    });
 
+    // Task 9: Change the text color of each item in the 'Related Links' to green
+    var relatedLinks = document.querySelectorAll('aside a');
+    relatedLinks.forEach(function(link) {
+        link.style.color = 'green';
+    });
 
-				// Task 5: Add placeholders to input elements based on their corresponding label IDs
-
-
-				// Task 6: Set the src attribute of the image
-
-
-				// Task 7: Add a new item in the navigation menu
-
-
-				// Task 8: Change the submit button text upon clicking and make it disabled
-
-
-				// Task 9: Change the text color of each item in the 'Related Links' to green
-
-
-				// Task 10: Add a red solid border to the footer
-			});
+    // Task 10: Add a red solid border to the footer
+    var footer = document.querySelector('footer');
+    footer.style.border = '2px solid red';
+});
 		</script>
 	</body>
 </html>
